@@ -1,0 +1,13 @@
+{
+    "name": "thomas/muggle-mvc",
+    "description": "A MVC framework with muggles in mind",
+    "require": {
+        "phpunit/phpunit": "^5.0"
+    },
+    "authors": [
+        {
+            "name": "tmanley1985",
+            "email": "tmanley1985@gmail.com"
+        }
+    ]
+}
