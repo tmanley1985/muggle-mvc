@@ -1,5 +1,7 @@
 <?php namespace App\Core;
 
+use App\Core\Request\Request;
+
 class App {
 	
 	protected $controller = 'home';
@@ -8,14 +10,18 @@ class App {
 
 	protected $params = [];
 
+	protected $request = [];
+
 	/**
 	 * [__construct Parses url ]
 	 *
 	 * @return   [<description>]
 	 */
 	
-	public function __construct()
+	public function __construct( Request $request )
 	{
+		$this->request = $request;
+
 		$url = $this->parse_url();
 
 		if( file_exists( '../app/controllers/' . $url[0] . '.php')) {
@@ -26,8 +32,6 @@ class App {
 		// require_once '../app/controllers/' . $this->controller . '.php';
 		$controller = 'App\Controllers\\' . $this->controller;
 		$this->controller = new $controller;
-
-		var_dump($this->controller);
 
 		if( isset( $url[1] ) ) {
 
@@ -52,5 +56,10 @@ class App {
 			return $url_parameters = explode( '/', $sanitized_url );
 
 		}
+	}
+
+	public function get_request()
+	{
+		return $this->request->getInput();
 	}
 }	
