@@ -1,6 +1,6 @@
 <?php
 
-use \App\Core\Request\Request;
+use \App\Core\Http\Request;
 
 class RequestTest extends PHPUnit_Framework_TestCase
 {
