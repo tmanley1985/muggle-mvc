@@ -1,6 +1,6 @@
 <?php namespace App\Core;
 
-use App\Core\Request\Request;
+use App\Core\Http\Request;
 
 class App {
 	
