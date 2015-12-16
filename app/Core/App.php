@@ -12,12 +12,11 @@ class App {
 
 	protected $request = [];
 
-	/**
-	 * [__construct Parses url ]
-	 *
-	 * @return   [<description>]
-	 */
 	
+	/**
+	 * Creates Instance of App
+	 * @param App\Cire\Http\Request $request 
+	 */
 	public function __construct( Request $request )
 	{
 		$this->request = $request;
@@ -45,6 +44,10 @@ class App {
 		call_user_func_array([$this->controller, $this->method ], $this->params );
 	}
 
+	/**
+	 * Parses URL and retrieves parameters from GET Superglobal
+	 * @return array $url_parameters
+	 */
 	protected function parse_url()
 	{
 		if( $_GET['url']) {
@@ -58,6 +61,10 @@ class App {
 		}
 	}
 
+	/**
+	 * Public Getter for Request
+	 * @return [array $request
+	 */
 	public function get_request()
 	{
 		return $this->request->getInput();
