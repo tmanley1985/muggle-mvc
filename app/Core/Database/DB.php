@@ -53,7 +53,7 @@ class DB
         var_dump($this->host);
     	try {
 
-    		return new PDO( "mysql:host=localhost;dbname=Framework;port=3306", "root" , "" );
+    		return new PDO( "mysql:host={$host};dbname={$db_name};port={$port}", $user , $password );
 
     	} catch (Exception $e) {
 
