@@ -3,6 +3,7 @@
 namespace App\Core\Database;
 
 use App\Core\Config\Config;
+use PDO;
 
 class DB
 {
@@ -24,12 +25,12 @@ class DB
      */
     public static function getInstance( )
     {
-    	$host = DB::getHost();
-    	$db_name = DB::getDBName();
-    	$user = DB::getUser();
-    	$password = DB::getPassword();
-    	$port = DB::getPort();
-    	
+    	$host = Config::getHost();
+    	$db_name = Config::getDBName();
+    	$user = Config::getUser();
+    	$password = Config::getPassword();
+    	$port = Config::getPort();
+
         if (null === static::$db) {
             static::$db = new static( $host, $db_name, $user, $password, $port );
         }
@@ -49,12 +50,13 @@ class DB
     	$this->password    = $password;
     	$this->port    = $port;
 
+        var_dump($this->host);
     	try {
 
-    		return new PDO( "mysql:host={$host};dbname={$db_name};port={$port}", $user , $password );
+    		return new PDO( "mysql:host=localhost;dbname=Framework;port=3306", "root" , "" );
 
     	} catch (Exception $e) {
-    		
+
     	}
     }
 
